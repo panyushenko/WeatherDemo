@@ -44,6 +44,9 @@ class ViewController: UIViewController {
         WeatherDownloader2.sharedInstance.requestWeather(latitude: coordinates.latitude, longitude: coordinates.longitude) { [weak self] (weatherData) in
             self?.updateUI(weatherData: weatherData)
         }
+        WeatherDownloader3.sharedInstance.requestWeather(latitude: coordinates.latitude, longitude: coordinates.longitude) { [weak self] (weatherData2) in
+            self?.updateUI2(weatherData2: weatherData2)
+        }
     }
 
     func updateUI(weatherData: WeatherData){
@@ -51,14 +54,6 @@ class ViewController: UIViewController {
         weatherDescriptionLabel.text = weatherData.type
         if let temp = weatherData.temperature {
             temperatureLabel.text = "\(temp - 273.15) ℃"
-        }
-    }
-    
-    func loadWeatherAndUpdateUI2() {
-        guard let coordinates = locationManager.location?.coordinate else { return }
-        
-        WeatherDownloader3.sharedInstance.requestWeather(latitude: coordinates.latitude, longitude: coordinates.longitude) { [weak self] (weatherData2) in
-            self?.updateUI2(weatherData2: weatherData2)
         }
     }
     
@@ -85,9 +80,9 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        loadWeatherAndUpdateUI2()
+        loadWeatherAndUpdateUI()
+        guard let countRowsForCell = countRowsForCell  else { return 1 }
         
-        guard let countRowsForCell = countRowsForCell  else { return 0 }
         return countRowsForCell
     }
     

@@ -22,8 +22,7 @@ class WeatherDownloader3 {
             if case .success(let value) = dataResponse.result {
                 let json = JSON(value)
                 
-                //let countRows = json["cnt"].int
-                let countRows = json["list"].int
+                let countRows = json["cnt"].int
                 let dateAndTime = json["list"][0]["dt"].string
                 let typeWeather = json["list"][0]["weather"]["description"].string
                 let temp = json["list"][0]["main"]["temp"].double
