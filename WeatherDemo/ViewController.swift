@@ -19,12 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     
     var locationManager = CLLocationManager()
-    
-    var countRow: Int?
+
     var informWeatherArray = [[String: Any]]()
-    //var informWeatherArray = [WeatherData]()
-//    var dateAndTimeForFivesDays: String?
-//    var temperatureForFivesDays: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
