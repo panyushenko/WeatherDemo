@@ -45,7 +45,8 @@ class WeatherDownloader2 {
                     let temp = item["main"]["temp"].double
                     let type = item["weather"][0]["main"].string
                     if let newDateAndTime = dateAndTime, let newTemp = temp, let newType = type {
-                        arrayList.append(["dt_txt": newDateAndTime, "temp": newTemp, "description": newType])
+                        let timeAndDate = newDateAndTime.components(separatedBy: " ")
+                        arrayList.append(["date_txt": timeAndDate[0], "time_txt": timeAndDate[1], "temp": newTemp, "description": newType])
                     }
                 }
 

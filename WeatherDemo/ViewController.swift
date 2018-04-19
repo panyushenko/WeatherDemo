@@ -91,8 +91,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        if let dateAndTime = informWeatherArray[indexPath.row]["dt_txt"] {
-            cell.dateAndTimeLable.text = "\(dateAndTime as! String)"
+        if let date = informWeatherArray[indexPath.row]["date_txt"] {
+            cell.dateLable.text = "\(date as! String)"
+        }
+        if let time = informWeatherArray[indexPath.row]["time_txt"] {
+            cell.timeLabel.text = "\(time as! String)"
         }
         if let temperature = informWeatherArray[indexPath.row]["temp"] {
             cell.temperatureForFivesDaysLabel.text = "\(Int(temperature as! Double - 273.15))℃"
