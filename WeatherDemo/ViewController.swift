@@ -39,7 +39,7 @@ class ViewController: UIViewController {
 //        activityIndicatorView.startAnimating()
 //        let data = []
 //        var loadContent { data in
-//            self.activityIndicatorView.stopAnimating()
+            self.activityIndicator.isHidden = true
 //            self.data = data
 //            self.tableView.reloadData()
 //        }
@@ -63,10 +63,6 @@ class ViewController: UIViewController {
     }
 
     func update2UI(weatherDataFiveDays: WeatherDataFiveDayes) {
-        //countRow = weatherDataFiveDays.countRow
-//        if let list = weatherDataFiveDays.list {
-//            informWeatherArray = list
-//        }
         informWeatherArray = weatherDataFiveDays.list
         tableView.reloadData()
     }
@@ -93,23 +89,17 @@ extension ViewController: CLLocationManagerDelegate {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //loadWeatherAndUpdateUI()
-//        guard let countRow = countRow else { return 0}
-//        return countRow
         return informWeatherArray.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        //guard let informWeatherArray = informWeatherArray else {return cell}
-        //cell.dateAndTimeLable.text = "\(informWeatherArray[indexPath.row]["dt_txt"])"
-        //cell.dateAndTimeLable.text = "\)"
         if let dateAndTime = informWeatherArray[indexPath.row]["dt_txt"] {
-            cell.dateAndTimeLable.text = "\(dateAndTime)"
+            cell.dateAndTimeLable.text = "\(dateAndTime as! String)"
         }
         if let temperature = informWeatherArray[indexPath.row]["temp"] {
-            cell.temperatureForFivesDaysLabel.text = "\(temperature)℃"
+            cell.temperatureForFivesDaysLabel.text = "\(Int(temperature as! Double - 273.15))℃"
         }
         if let type = informWeatherArray[indexPath.row]["description"] {
             cell.iconeWeatherImage.image = UIImage(named: type as! String)

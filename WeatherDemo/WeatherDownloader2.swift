@@ -38,30 +38,28 @@ class WeatherDownloader2 {
             if case .success(let value) = dataResponse.result {
                 let json = JSON(value)
                 
-                let cnt = json["cnt"].int
+                //let cnt = json["cnt"].int
                 
-                guard let newCnt = cnt else {return}
+                //guard let newCnt = cnt else {return}
                 
                 var arrayList = [[String: Any]]()
-                for index in 0...newCnt {
-                    let dateAndTime = json["list"][index]["dt_txt"].string
-                    let temp = json["list"][index]["main"]["temp"].double
-                    let type = json["list"][index]["weather"][0]["main"].string
-                    //guard let newDateAndTime = dateAndTime, let newTemp = temp, let newType = type else {return}
-                    if let newDateAndTime = dateAndTime, let newTemp = temp, let newType = type {
-                        arrayList.append(["dt_txt": newDateAndTime, "temp": Int(newTemp - 273.15), "description": newType])
-                    }
-                }
-                
-//                for item in json["list"].arrayValue {
-//                    let dateAndTime = item["dt_txt"].string
-//                    let temp = item["main"]["temp"].double
-//                    let type = item["weather"][0]["main"].string
+//                for index in 0...newCnt {
+//                    let dateAndTime = json["list"][index]["dt_txt"].string
+//                    let temp = json["list"][index]["main"]["temp"].double
+//                    let type = json["list"][index]["weather"][0]["main"].string
+//                    //guard let newDateAndTime = dateAndTime, let newTemp = temp, let newType = type else {return}
+//                    if let newDateAndTime = dateAndTime, let newTemp = temp, let newType = type {
+//                        arrayList.append(["dt_txt": newDateAndTime, "temp": Int(newTemp - 273.15), "description": newType])
+//                    }
 //                }
+                
+                for item in json["list"].arrayValue {
+                    let dateAndTime = item["dt_txt"].string
+                    let temp = item["main"]["temp"].double
+                    let type = item["weather"][0]["main"].string
+                    arrayList.append(["dt_txt": dateAndTime, "temp": temp, "description": type])
+                }
 
-//                let dateAndTime = json["list"][0]["dt_txt"].string
-//                let temp = json["list"][0]["main"]["temp"].double
-//                let type = json["list"][0]["weather"][0]["description"].string
 
                 DispatchQueue.main.async {
                     //completion(WeatherDataFiveDayes(countRow: cnt))
