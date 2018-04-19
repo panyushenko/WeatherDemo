@@ -13,3 +13,11 @@ struct WeatherData {
     let type: String?
     let temperature: Double?
 }
+
+struct WeatherDataFiveDayes {
+//    let countRow: Int?
+    let list: [[String: Any]]
+//    let temperature: Double?
+//    let type: String?
+//    let dateAndTime: String?
+}

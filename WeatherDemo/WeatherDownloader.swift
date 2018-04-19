@@ -32,4 +32,21 @@ class WeatherDownloader {
         }
         dataTask.resume()
     }
+    func requestWeatherFiveDays(latitude: Double, longitude: Double, completion: @escaping (_ weatherData: WeatherDataFiveDayes) -> Void) {
+        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/forecast?lat=\(latitude)&lon=\(longitude)&appid=\(Constance.OpenWeatherMap.apiKey)&lang=ru") else { return }
+        //download
+        let dataTask = session.dataTask(with: url) { (data, response, error) in
+            guard let data = data, error == nil else { return }
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return }
+            
+            let cnt = json?["cnt"] as? Int
+            // Вернуть данные WeatherData
+            // выполнение в главное потоке
+            DispatchQueue.main.async {
+                //completion(WeatherDataFiveDayes(countRow: cnt))
+                //completion(WeatherDataFiveDayes(countRow: cnt, temperature: temp, type: type, dateAndTime: dateAndTime))
+            }
+        }
+        dataTask.resume()
+    }
 }

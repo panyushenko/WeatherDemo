@@ -11,11 +11,20 @@ import CoreLocation
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var citeLabel: UILabel!
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     
     var locationManager = CLLocationManager()
+    
+    var countRow: Int?
+    var informWeatherArray = [[String: Any]]()
+    //var informWeatherArray = [WeatherData]()
+//    var dateAndTimeForFivesDays: String?
+//    var temperatureForFivesDays: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +32,18 @@ class ViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.requestWhenInUseAuthorization()
         locationManager.startMonitoringSignificantLocationChanges()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+//        activityIndicatorView.startAnimating()
+//        let data = []
+//        var loadContent { data in
+//            self.activityIndicatorView.stopAnimating()
+//            self.data = data
+//            self.tableView.reloadData()
+//        }
+        //activityIndicator.startAnimating()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,11 +54,23 @@ class ViewController: UIViewController {
     func loadWeatherAndUpdateUI() {
         guard let coordinates = locationManager.location?.coordinate else { return }
         
-        WeatherDownloader.sharedInstance.requestWeather(latitude: coordinates.latitude, longitude: coordinates.longitude) { [weak self] (weatherData) in
+        WeatherDownloader2.sharedInstance.requestWeather(latitude: coordinates.latitude, longitude: coordinates.longitude) { [weak self] (weatherData) in
             self?.updateUI(weatherData: weatherData)
+        }
+        WeatherDownloader2.sharedInstance.requestWeatherFiveDays(latitude: coordinates.latitude, longitude: coordinates.longitude) { [weak self] (weatherDataFiveDays) in
+            self?.update2UI(weatherDataFiveDays: weatherDataFiveDays)
         }
     }
 
+    func update2UI(weatherDataFiveDays: WeatherDataFiveDayes) {
+        //countRow = weatherDataFiveDays.countRow
+//        if let list = weatherDataFiveDays.list {
+//            informWeatherArray = list
+//        }
+        informWeatherArray = weatherDataFiveDays.list
+        tableView.reloadData()
+    }
+    
     func updateUI(weatherData: WeatherData){
         citeLabel.text = weatherData.city
         weatherDescriptionLabel.text = weatherData.type
@@ -56,5 +88,32 @@ extension ViewController: CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         loadWeatherAndUpdateUI()
+    }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //loadWeatherAndUpdateUI()
+//        guard let countRow = countRow else { return 0}
+//        return countRow
+        return informWeatherArray.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+        //guard let informWeatherArray = informWeatherArray else {return cell}
+        //cell.dateAndTimeLable.text = "\(informWeatherArray[indexPath.row]["dt_txt"])"
+        //cell.dateAndTimeLable.text = "\)"
+        if let dateAndTime = informWeatherArray[indexPath.row]["dt_txt"] {
+            cell.dateAndTimeLable.text = "\(dateAndTime)"
+        }
+        if let temperature = informWeatherArray[indexPath.row]["temp"] {
+            cell.temperatureForFivesDaysLabel.text = "\(temperature)℃"
+        }
+        if let type = informWeatherArray[indexPath.row]["description"] {
+            cell.iconeWeatherImage.image = UIImage(named: type as! String)
+        }
+        return cell
     }
 }

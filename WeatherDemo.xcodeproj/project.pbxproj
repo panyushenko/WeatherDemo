@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F02898AF861FB306F34649D /* Pods_WeatherDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF510E7D733237A1E81A9C2 /* Pods_WeatherDemo.framework */; };
+		D087A5B02087C94E00FEB193 /* weatherIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D087A5AF2087C94E00FEB193 /* weatherIcons.xcassets */; };
 		D09AFB422081D84400079394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09AFB412081D84400079394 /* AppDelegate.swift */; };
 		D09AFB442081D84400079394 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09AFB432081D84400079394 /* ViewController.swift */; };
 		D09AFB472081D84400079394 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D09AFB452081D84400079394 /* Main.storyboard */; };
@@ -16,11 +17,14 @@
 		D09AFB542081DA6800079394 /* Constanse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09AFB532081DA6800079394 /* Constanse.swift */; };
 		D09AFB562081EB0500079394 /* WeatherDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09AFB552081EB0500079394 /* WeatherDownloader.swift */; };
 		D09AFB582081ECB800079394 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09AFB572081ECB800079394 /* WeatherData.swift */; };
+		D0C91E6F208610A2003EB462 /* WeatherDownloader2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C91E6E208610A2003EB462 /* WeatherDownloader2.swift */; };
+		D0C91E712086231D003EB462 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C91E702086231D003EB462 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1DECE330E57F606E6764CE9D /* Pods-WeatherDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherDemo/Pods-WeatherDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4857DBCD12BA6E490865F7CE /* Pods-WeatherDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherDemo/Pods-WeatherDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		D087A5AF2087C94E00FEB193 /* weatherIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = weatherIcons.xcassets; sourceTree = "<group>"; };
 		D09AFB3E2081D84400079394 /* WeatherDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09AFB412081D84400079394 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D09AFB432081D84400079394 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +35,8 @@
 		D09AFB532081DA6800079394 /* Constanse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constanse.swift; sourceTree = "<group>"; };
 		D09AFB552081EB0500079394 /* WeatherDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDownloader.swift; sourceTree = "<group>"; };
 		D09AFB572081ECB800079394 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		D0C91E6E208610A2003EB462 /* WeatherDownloader2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDownloader2.swift; sourceTree = "<group>"; };
+		D0C91E702086231D003EB462 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		EBF510E7D733237A1E81A9C2 /* Pods_WeatherDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,10 +93,13 @@
 				D09AFB412081D84400079394 /* AppDelegate.swift */,
 				D09AFB432081D84400079394 /* ViewController.swift */,
 				D09AFB552081EB0500079394 /* WeatherDownloader.swift */,
+				D0C91E6E208610A2003EB462 /* WeatherDownloader2.swift */,
 				D09AFB572081ECB800079394 /* WeatherData.swift */,
 				D09AFB452081D84400079394 /* Main.storyboard */,
+				D0C91E702086231D003EB462 /* TableViewCell.swift */,
 				D09AFB532081DA6800079394 /* Constanse.swift */,
 				D09AFB482081D84800079394 /* Assets.xcassets */,
+				D087A5AF2087C94E00FEB193 /* weatherIcons.xcassets */,
 				D09AFB4A2081D84800079394 /* LaunchScreen.storyboard */,
 				D09AFB4D2081D84800079394 /* Info.plist */,
 			);
@@ -159,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09AFB4C2081D84800079394 /* LaunchScreen.storyboard in Resources */,
+				D087A5B02087C94E00FEB193 /* weatherIcons.xcassets in Resources */,
 				D09AFB492081D84800079394 /* Assets.xcassets in Resources */,
 				D09AFB472081D84400079394 /* Main.storyboard in Resources */,
 			);
@@ -231,6 +241,8 @@
 				D09AFB582081ECB800079394 /* WeatherData.swift in Sources */,
 				D09AFB562081EB0500079394 /* WeatherDownloader.swift in Sources */,
 				D09AFB422081D84400079394 /* AppDelegate.swift in Sources */,
+				D0C91E6F208610A2003EB462 /* WeatherDownloader2.swift in Sources */,
+				D0C91E712086231D003EB462 /* TableViewCell.swift in Sources */,
 				D09AFB542081DA6800079394 /* Constanse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,7 +392,10 @@
 				DEVELOPMENT_TEAM = 5P7T289PPK;
 				INFOPLIST_FILE = WeatherDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.panyushenko.WeatherDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -397,7 +412,10 @@
 				DEVELOPMENT_TEAM = 5P7T289PPK;
 				INFOPLIST_FILE = WeatherDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.panyushenko.WeatherDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

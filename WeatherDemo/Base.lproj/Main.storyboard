@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lfp-VG-PLy">
-                                <rect key="frame" x="0.0" y="90" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1h-wO-CLS">
                                         <rect key="frame" x="136" y="0.0" width="103" height="52.5"/>
@@ -42,24 +44,93 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5Ta-Jb-1Bx">
+                                <rect key="frame" x="0.0" y="250" width="375" height="417"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="56" id="xVh-yz-iIl" customClass="TableViewCell" customModule="WeatherDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xVh-yz-iIl" id="0Ht-PA-c1S">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goh-rX-EfR">
+                                                    <rect key="frame" x="310" y="17" width="50" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="2yY-vZ-rhK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zba-1I-4b2">
+                                                    <rect key="frame" x="241" y="11" width="34" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="zba-1I-4b2" secondAttribute="height" multiplier="1:1" id="Yog-DB-5oU"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBS-MX-MIn">
+                                                    <rect key="frame" x="15" y="17" width="180" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="180" id="WW3-OE-M7L"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eBS-MX-MIn" firstAttribute="leading" secondItem="0Ht-PA-c1S" secondAttribute="leadingMargin" id="1H2-ig-acf"/>
+                                                <constraint firstItem="eBS-MX-MIn" firstAttribute="top" secondItem="0Ht-PA-c1S" secondAttribute="topMargin" constant="6" id="EiM-zG-h1p"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="eBS-MX-MIn" secondAttribute="bottom" constant="7" id="OKJ-r6-1DG"/>
+                                                <constraint firstItem="goh-rX-EfR" firstAttribute="trailing" secondItem="0Ht-PA-c1S" secondAttribute="trailingMargin" id="PE1-U9-Hds"/>
+                                                <constraint firstItem="zba-1I-4b2" firstAttribute="top" secondItem="0Ht-PA-c1S" secondAttribute="topMargin" id="QiB-qZ-uQp"/>
+                                                <constraint firstItem="goh-rX-EfR" firstAttribute="top" secondItem="0Ht-PA-c1S" secondAttribute="topMargin" constant="6" id="TI8-0m-MXY"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eBS-MX-MIn" secondAttribute="trailingMargin" id="edN-Gp-eYF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="goh-rX-EfR" secondAttribute="bottom" constant="7" id="fp3-kM-cbY"/>
+                                                <constraint firstItem="goh-rX-EfR" firstAttribute="leading" secondItem="zba-1I-4b2" secondAttribute="trailing" constant="35" id="q2J-NI-t5v"/>
+                                                <constraint firstItem="zba-1I-4b2" firstAttribute="bottom" secondItem="0Ht-PA-c1S" secondAttribute="bottomMargin" id="vea-eV-1z2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateAndTimeLable" destination="eBS-MX-MIn" id="b4r-la-igZ"/>
+                                            <outlet property="iconeWeatherImage" destination="zba-1I-4b2" id="aKG-zb-ys6"/>
+                                            <outlet property="temperatureForFivesDaysLabel" destination="goh-rX-EfR" id="TEu-cp-aYh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1Jv-Sl-BE4">
+                                <rect key="frame" x="177" y="258" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lfp-VG-PLy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="1JE-a3-QvG"/>
+                            <constraint firstItem="lfp-VG-PLy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="1JE-a3-QvG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Ta-Jb-1Bx" secondAttribute="bottom" id="7FA-bT-rQf"/>
                             <constraint firstItem="lfp-VG-PLy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Gi-UP-ueX"/>
+                            <constraint firstItem="5Ta-Jb-1Bx" firstAttribute="top" secondItem="lfp-VG-PLy" secondAttribute="bottom" id="K5n-50-WTP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Ta-Jb-1Bx" secondAttribute="trailing" id="XNG-VJ-cQl"/>
+                            <constraint firstItem="5Ta-Jb-1Bx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cbE-A5-uER"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lfp-VG-PLy" secondAttribute="trailing" id="pZr-V2-7Yl"/>
                             <constraint firstItem="lfp-VG-PLy" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="zQE-Tb-p68"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="1Jv-Sl-BE4" id="lOP-6T-oWN"/>
                         <outlet property="citeLabel" destination="u1h-wO-CLS" id="hAR-Kn-0gK"/>
+                        <outlet property="tableView" destination="5Ta-Jb-1Bx" id="uRd-au-f9D"/>
                         <outlet property="temperatureLabel" destination="AY8-AC-NqU" id="h6r-Gz-pTV"/>
                         <outlet property="weatherDescriptionLabel" destination="Omv-SX-OQj" id="gMR-4V-Ja6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

@@ -10,6 +10,6 @@ import Foundation
 
 struct Constance {
     struct OpenWeatherMap {
-        static let apiKey = "ce5ff65413bb05bc45a937d222fef265"
+        static let apiKey = "98828dd769fa02748d70959f1f3580ca"
     }
 }
