@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         citeLabel.text = weatherData.city
         weatherDescriptionLabel.text = weatherData.type
         if let temp = weatherData.temperature {
-            temperatureLabel.text = "\(temp - 273.15)"
+            temperatureLabel.text = "\(Int(temp - 273.15)℃)"
         }
     }
 }
